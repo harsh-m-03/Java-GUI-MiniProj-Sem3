@@ -219,7 +219,7 @@ public class MiniProject {
                                                                                                                         // message
                 else if (randomPass.isSelected()) {
                     System.out.println("Randon Password is Selected");
-                    String output = "Random Password of length 10 with 2 uppercase, \nlowercase character each with a special character and \nnumber is generated";
+                    String output = "Random Password generated!";
                     JOptionPane.showMessageDialog(null, output);// Done Message
                     password genpass = new password(); // creating an object of userdefine package
                     textField.setText(genpass.generate());// genpass.generate is a function in
@@ -241,26 +241,29 @@ public class MiniProject {
                             // Checking number of uppercase
                             temp = JOptionPane.showInputDialog(null, "Enter number of UpperCase for the password");
                             int noUpperCase = 0;
-                            if (!checkInput(temp))
-                                isValidInput("InValid Integer, UpperCase=0");
-                            else
-                                noUpperCase = Integer.parseInt(temp);
+                            while (!checkInput(temp)) {
+                                isValidInput("InValid Integer");
+                                temp = JOptionPane.showInputDialog(null, "Enter number of UpperCase for the password");
+                            }
+                            noUpperCase = Integer.parseInt(temp);
 
                             // checking number of lowercase
                             temp = JOptionPane.showInputDialog(null, "Enter number of LowerCase for the password");
                             int nolowerCase = 0;
-                            if (!checkInput(temp))
-                                isValidInput("InValid Integer, LowerCase=0");
-                            else
-                                nolowerCase = Integer.parseInt(temp);
+                            while (!checkInput(temp)) {
+                                isValidInput("InValid Integer");
+                                temp = JOptionPane.showInputDialog(null, "Enter number of LowerCase for the password");
+                            }
+                            nolowerCase = Integer.parseInt(temp);
 
                             // checking number of specialcase
                             temp = JOptionPane.showInputDialog(null, "Enter number of Special Characters");
                             int noSpecialCase = 0;
-                            if (!checkInput(temp))
-                                isValidInput("InValid Integer, SpecialCharacter=0");
-                            else
-                                noSpecialCase = Integer.parseInt(temp);
+                            while (!checkInput(temp)) {
+                                isValidInput("InValid Integer");
+                                temp = JOptionPane.showInputDialog(null, "Enter number of Special Characters");
+                            }
+                            noSpecialCase = Integer.parseInt(temp);
 
                             // calculating total by userInput
                             int total = noSpecialCase + noUpperCase + nolowerCase;
