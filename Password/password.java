@@ -9,17 +9,18 @@ public class password {
     public String generate() {
         // special char, number, lowerchase, upperchase
         String pass = ""; // introduce pass as empty
-        pass += (char) randomChar(97, 122);
-        pass = pass.toUpperCase();
-        pass += (char) randomChar(97, 122);
+        //passing uppercase and lowercase characters
+        for (int i = 0; i < 2; i++) {
+            pass += String.valueOf((char) randomChar(97, 122)).toUpperCase();
+            pass += (char) randomChar(97, 122);
+        }
+        //passing special characters
         char temp1 = (char) randomChar(58, 64);
         char temp2 = (char) randomChar(33, 47);
         pass += new Random().nextBoolean() ? (char) temp1 : (char) temp2;
         int i = 5;
         while (i-- > 0)
             pass += String.valueOf((int) randomChar(0, 9));
-        pass += String.valueOf((char) randomChar(97, 122)).toUpperCase();
-        pass += (char) randomChar(97, 122);
 
         return shuffleString(pass);
     }

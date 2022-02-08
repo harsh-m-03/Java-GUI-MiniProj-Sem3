@@ -3,19 +3,25 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -86,12 +92,12 @@ public class MiniProject {
     public static JFrame homePage = new JFrame();
     public static JFrame frameForFile = new JFrame();
     public static JFrame frameForPass = new JFrame();
-    public static final int key = Integer.MAX_VALUE;
+    public static final int key = 3;
 
     // Methods for Pass:
 
+   
     public static void operationOnPass() {
-
         // desiging frame for password
         frameForPass.setTitle("Work with Password");
         frameForPass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -143,7 +149,6 @@ public class MiniProject {
         JButton proceed = new JButton("Proceed");
         proceed.setFont(fontForButton);
         proceed.setPreferredSize(new Dimension(150, 38));
-        proceed.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         // Adding back Button
         JButton backButton = new JButton("Home");
@@ -224,7 +229,8 @@ public class MiniProject {
                     password genpass = new password(); // creating an object of userdefine package
                     textField.setText(genpass.generate());// genpass.generate is a function in
                                                           // Password package
-                } else if (customPass.isSelected()) { // for custom password
+                }
+                 else if (customPass.isSelected()) { // for custom password
                     System.out.println("Custom Pass is selected");
                     // taking length, and requirements from the user
                     int length = 0;
@@ -289,11 +295,11 @@ public class MiniProject {
 
         copyButton.addActionListener(e -> {
             System.out.println("CopyButton is pressed");
-            StringSelection stringSelection = new StringSelection(textField.getText()); // getting text from textfield
-                                                                                        // in stringselectoin
-            Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard(); // getting access to clipboard
-            clpbrd.setContents(stringSelection, null); // adding text to clipboard
-            JOptionPane.showMessageDialog(null, "Text Copied!"); // done message
+                StringSelection stringSelection = new StringSelection(textField.getText()); // getting text from textfield
+                                                                                            // in stringselectoin
+                Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard(); // getting access to clipboard
+                clpbrd.setContents(stringSelection, null); // adding text to clipboard
+                JOptionPane.showMessageDialog(null, "Text Copied!"); // done message
         });
 
         // adding all to password frame
@@ -451,3 +457,4 @@ public class MiniProject {
 
     }
 }
+
